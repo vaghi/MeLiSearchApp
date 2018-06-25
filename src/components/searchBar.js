@@ -1,6 +1,6 @@
 import React from 'react';
-import logoML from '../Assets/Logo_ML.png' // relative path to image 
-import searchIcon from '../Assets/ic_Search.png' // relative path to image 
+import logoML from '../Assets/Logo_ML.png'
+import searchIcon from '../Assets/ic_Search.png'
 
 class SearchBar extends React.Component {
 

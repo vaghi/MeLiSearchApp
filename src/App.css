@@ -38,8 +38,48 @@ input {
   border: none;
 }
 
+.results-list-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #EEEEEE;
+}
+
+.results-list {
+  width: 80%;
+  background: #FFFFFF;
+}
+
+.result-item-container {
+  list-style: none;
+  align-items: center;
+  display: flex;
+}
+
+.item-image-container {
+  margin: 24px;
+}
+
+.item-price-container span:first-child {
+  padding-right: 8px;
+}
+
 .searchBtn:hover {
   background-color: #aaa;
+}
+
+.item-image-container {
+  width: 160px;
+  height: 160px;
+}
+
+.item-image-container img {
+  width: 160px;
+  height: 160px;
+}
+
+.free-shipping-img {
+  padding-left: 8px;
 }
 
 @keyframes App-logo-spin {
