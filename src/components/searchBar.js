@@ -19,11 +19,13 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className="header">
-        <img src={logoML} alt=""/>
-        <input type="text" id="searchInput" placeholder="Nunca dejes de buscar" onChange={ this.changeHandler.bind(this) }/>
-        <button type="submit" className="searchBtn" onClick={ this.searchHandler.bind(this) }>
-          <img src={searchIcon} alt=""></img>
-        </button>
+        <div className="header-content">
+          <img src={logoML} alt=""/>
+          <input type="text" id="searchInput" placeholder="Nunca dejes de buscar" onChange={ this.changeHandler.bind(this) }/>
+          <button type="submit" className="searchBtn" onClick={ this.searchHandler.bind(this) }>
+            <img src={searchIcon} alt=""></img>
+          </button>
+        </div>
       </div>
     );
   }

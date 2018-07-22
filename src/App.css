@@ -1,25 +1,24 @@
 .header {
   background-color: #FFE600;
-  padding: 15px 40px;
+  padding: 15px 0px;
   color: white;
-  text-align: center;
   display: flex;
+  justify-content: center;
 }
 
-.header:after {
-  content: "";
-  display: table;
-  clear: both;
+.header-content {
+  display: flex;
+  width: 80%;
 }
 
 input {
   margin: 0;
   border: none;
   border-radius: 0;
-  width: 75%;
+  width: 100%;
   padding: 10px;
   float: left;
-  font-size: 16px;
+  font-size: 18px;
   margin-left: 20px;
 }
 
@@ -38,16 +37,20 @@ input {
   border: none;
 }
 
+.searchBtn:hover {
+  background-color: #aaa;
+}
+
 .results-list-container {
   width: 100%;
-  display: flex;
-  justify-content: center;
   background: #EEEEEE;
 }
 
 .results-list {
   width: 80%;
   background: #FFFFFF;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .result-item-container {
@@ -56,33 +59,76 @@ input {
   display: flex;
 }
 
-.item-image-container {
-  margin: 24px;
+.result-item-container a {
+  text-decoration: none;
+  color: #333;
+}
+
+.item-price-container {
+  font-size: 24px;
+  padding-bottom: 32px;
 }
 
 .item-price-container span:first-child {
   padding-right: 8px;
 }
 
-.searchBtn:hover {
-  background-color: #aaa;
+.item-title-container {
+  font-size: 18px;
 }
 
 .item-image-container {
-  width: 160px;
-  height: 160px;
+  margin: 16px;
+  width: 180px;
+  height: 180px;
 }
 
 .item-image-container img {
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
+  border-radius: 4px;
+}
+
+.item-price-container .price-decimals {
+  font-size: 12px;
+  position: relative;
+  top: -8px;
 }
 
 .free-shipping-img {
   padding-left: 8px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.location-container {
+  margin-left: auto;
+  margin-right: 10%;
+}
+
+.breadcrumb {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  font-size: 14px;
+  list-style: none;
+  display: flex;
+}
+
+.breadcrumb li {
+  color: #999999;
+}
+
+.breadcrumb li:after {
+  content:'\3E';
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.breadcrumb li:last-child {
+  font-weight: bold;
+}
+
+.breadcrumb li:last-child:after {
+  content: none;
 }
