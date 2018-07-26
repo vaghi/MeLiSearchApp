@@ -24,7 +24,6 @@ class ResultsList extends React.Component {
 	}
 
 	searchItems(params) {
-
 		var queryParam = this.props.routerProps.location ? queryString.parse(this.props.routerProps.location.search) : null;
 		var urlParams = params ? params : queryParam;
 

@@ -41,7 +41,8 @@ class MainContainer extends React.Component {
         .then( results => {
             return results.json();
         }).then(data => {
-            this.setState({redirectToItem: true, itemData: data.item});
+            this.setState({redirectToItem: true, itemData: data});
+            console.log(data.item);
         });
     }
 
