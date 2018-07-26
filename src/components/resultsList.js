@@ -42,7 +42,7 @@ class ResultsList extends React.Component {
 	render() {
 
 		if(this.state.showResults === false) {
-			return <div>No items found</div>
+			return <div></div>
 		}
 
 		return (
