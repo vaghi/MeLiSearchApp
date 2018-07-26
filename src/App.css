@@ -62,11 +62,18 @@ input {
 .result-item-container a {
   text-decoration: none;
   color: #333;
+  cursor: pointer;
 }
 
 .item-price-container {
   font-size: 24px;
   padding-bottom: 32px;
+  display: flex;
+}
+
+.item-price-container img {
+  width: 20px;
+  height: 20px;
 }
 
 .item-price-container span:first-child {
@@ -87,6 +94,7 @@ input {
   width: 180px;
   height: 180px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .item-price-container .price-decimals {
@@ -131,4 +139,52 @@ input {
 
 .breadcrumb li:last-child:after {
   content: none;
+}
+
+.item-detail-container {
+  width: 80%;
+  background: #FFFFFF;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+.item-detail-image-container img {
+  width: 680px;
+  height: 680px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.item-detail-info-container {
+  margin-left: auto;
+  margin-right: 32px;
+  margin-top: 32px;
+}
+
+.item-detail-condition-and-qty {
+  font-size: 14px;
+}
+
+.item-detail-title {
+  font-size: 24px;
+  margin-top: 16px;
+}
+
+.item-detail-price-container {
+  font-size: 48px;
+  margin-top: 32px;
+}
+
+.item-detail-purchase-button {
+  margin-top: 32px;
+}
+
+.base-button {
+  width: 200px;
+  height: 38px;
+  background-color: #3483FA;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
 }

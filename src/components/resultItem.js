@@ -1,49 +1,54 @@
 import React from 'react';
-import shippingIcon from '../Assets/ic_shipping.png'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import shippingIcon from '../Assets/ic_shipping.png';
+import ItemPrice from '../components/itemPrice';
 
 class ResultItem extends React.Component {
 
-
 	constructor(props) {
-		super(props);
-		
-		this.currency = {
-        ARS: '$',
-        USD: 'U$S'
-    };
+		super();
 
-    this.shippingLabel = "Free Shipping";
+        this.state = {
+          redirect: false,
+          itemId: null
+        }
+
+        this.shippingLabel = "Free Shipping";
 	}
 
-  onClick = () => {
-    this.props.onSelectItem(this.props.Item.id);
-  }
+    handleItemClick(params) {
+        if (typeof this.props.onClickItem === 'function') {
+            this.props.onClickItem(params);
+        }
+    }
 
 
-  render() {
-    return (
-      <li id="resultItemContainer" className="result-item-container">
-      	<div id="itemImageContainer" className="item-image-container">
-    			<img src={this.props.Item.picture} alt={this.props.Item.title} onClick={this.onClick}/>
-      	</div>
-      	<div id="resultItemInfoContainer" className="result-item-info-container">
-      		<div id="itemPriceContainer" className="item-price-container">
-      			<span>{this.currency[this.props.Item.price.currency]}</span>
-      			<span>{this.props.Item.price.amount}</span>
-            {this.props.Item.price.decimals > 0 && <span className="price-decimals">{this.props.Item.price.decimals}</span>}
-      			{this.props.Item.free_shipping && <img src={shippingIcon} alt={this.shippingLabel} className="free-shipping-img"/>}
-      		</div>
-      		<div id="itemTitleContainer" className="item-title-container">
-	      		<Link to={`/item/${this.props.Item.id}`}>{this.props.Item.title}</Link>
-      		</div>
-      	</div>
-        <div id="locationContainer" className="location-container">
-          <span>{this.props.Item.location}</span>
-        </div>
-      </li>
-    );
-  }
+    render() {
+        if (this.props.redirectToItem === true) {
+            return <Redirect push to={"/items/" + this.props.Item.id}/>;
+        }
+
+        return (
+            <li id="resultItemContainer" className="result-item-container">
+                <div id="itemImageContainer" className="item-image-container">
+                    <img src={this.props.Item.picture} alt={this.props.Item.title} onClick={this.handleItemClick.bind(this, this.props.Item.id)}/>
+                </div>
+                <div id="resultItemInfoContainer" className="result-item-info-container">
+                    <div id="itemPriceContainer" className="item-price-container">
+                        <ItemPrice priceData={this.props.Item.price}/>
+                        {this.props.Item.free_shipping && <img src={shippingIcon} alt={this.shippingLabel} className="free-shipping-img"/>}
+                    </div>
+                    <div id="itemTitleContainer" className="item-title-container">
+                        <a onClick={ this.handleItemClick.bind(this, this.props.Item.id) }>{this.props.Item.title}</a>
+                    </div>
+                </div>
+                <div id="locationContainer" className="location-container">
+                    <span>{this.props.Item.location}</span>
+                </div>
+            </li>
+        );
+    }
 }
 
 export default ResultItem;

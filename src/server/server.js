@@ -46,9 +46,15 @@ function parseResultsList(response) {
 		items: []
 	};
 
-	if(response.filters.length > 0 && response.filters[0].values.length > 0)
+	var categories = response.filters.map(function(item) {
+		if(item.id === "category") {
+			return item;
+		}
+	});
+
+	if(categories.length > 0 && categories[0].values.length > 0)
 	{
-		responseParsed.categories = response.filters[0].values[0].path_from_root.map(function(item){
+		responseParsed.categories = categories[0].values[0].path_from_root.map(function(item){
 			return item.name;
 		});
 	}

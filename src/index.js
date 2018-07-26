@@ -14,47 +14,48 @@ import ItemDetail from './components/itemDetail';
 
 class MainContainer extends React.Component {
 
-	constructor(state) {
-   super(state);
-   this.handleSelectItem = this.handleSelectItem.bind(this, 'Parameter');
-   this.state = {
-     query: '',
-     showResults: false,
-     resultItems: [],
-     server: 'http://localhost:3000'
-   };
- }
+    constructor(state) {
+        super(state);
 
-  handleChange(e) {
-    this.setState({ query: e });
-  }
+        this.selectItemHandler = this.selectItemHandler.bind(this);
 
-  handleSearch(param) {
-    history.push("items?search=" + this.state.query);
-  }
+        this.state = {
+            query: '',
+            showResults: false,
+            server: 'http://localhost:3000',
+            itemData: null
+        };
+    }
 
-handleSelectItem(e, param) {
-  fetch( this.state.server + '/api/items/' + param)
-  .then( results => {
-   return results.json();
- }).then(data => {
-   console.log(data);
-   this.props.history.push(data.item.id);
- });
-}
+    handleChange(e) {
+        this.setState({ query: e });
+    }
 
-render() {
-  return (
-    <div>
-      <SearchBar onSearch={this.handleSearch.bind(this)} onChange={this.handleChange.bind(this)}/>
-      { this.state.showResults ? <ResultsList onSelectItem={this.handleSelectItem}/> : null }
-      <Switch>
-        <Route exact path='/items' component={ResultsList}/>
-        <Route path='/items/:id' component={ItemDetail}/>
-      </Switch>
-    </div>
-    );
-  }
+    handleSearch(param) {
+        history.replace("items?search=" + this.state.query);
+        this.setState({redirectToItem: false});
+    }
+
+    selectItemHandler(param, e) {    
+        fetch( 'http://localhost:3000/api/items/' + param)
+        .then( results => {
+            return results.json();
+        }).then(data => {
+            this.setState({redirectToItem: true, itemData: data.item});
+        });
+    }
+
+    render() {
+        return (
+            <div>
+            <SearchBar onSearch={this.handleSearch.bind(this)} onChange={this.handleChange.bind(this)}/>
+            <Switch>
+                <Route exact path='/items' render={(routerProps) => <ResultsList routerProps={routerProps} redirectToItem={this.state.redirectToItem} onClickItem={this.selectItemHandler} data={this.state.itemDetailData}/>}/>
+                <Route path='/items/:id' render={(routerProps) => <ItemDetail routerProps={routerProps} itemData={this.state.itemData} searchItem={this.selectItemHandler}/>}/>
+            </Switch>
+            </div>
+        );
+    }
 }
 
 ReactDOM.render(
@@ -62,6 +63,6 @@ ReactDOM.render(
     <MainContainer/>
   </BrowserRouter>,
   document.getElementById('container')
-);
+  );
 
-registerServiceWorker();
+  registerServiceWorker();
