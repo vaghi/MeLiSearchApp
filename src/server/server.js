@@ -3,6 +3,9 @@ app = express(),
 bodyParser = require("body-parser"),
 methodOverride = require("method-override");
 
+const NodeCache = require( "node-cache" );
+const myCache = new NodeCache();
+
 const cors = require("cors");
 
 app.use(bodyParser.urlencoded({
@@ -24,6 +27,15 @@ var apiML = "https://api.mercadolibre.com"
 var quantityOfResults = 4;
 
 router.get('/api/items', function (req, res) {
+
+	var cacheKey = "search/" + req.query.q;
+	var cached = validateCache(cacheKey);
+
+	if(cached !== false){
+		res.send(cached);
+		return;
+	}
+
 	request.get({
 		"headers": {
 			"content-type": "application/json"
@@ -33,7 +45,9 @@ router.get('/api/items', function (req, res) {
 		if (error) {
 			return console.dir(error);
 		}
-		res.send(parseResultsList(JSON.parse(body)));
+		var responseData = parseResultsList(JSON.parse(body));
+		myCache.set( cacheKey, responseData);
+		res.send(responseData);
 	});
 });
 
@@ -86,23 +100,6 @@ function parseResultsList(response) {
 /*********************** ITEMS *************************/
 /*******************************************************/
 
-function createItemRequest(url){
-	return new Promise((resolve, reject) => {
-    	request.get({
-			"headers": {
-				"content-type": "application/json"
-			},
-			"url": url
-		}, (error, response, body) => {
-			if (error) {
-				reject(error);
-			} else {
-				resolve(JSON.parse(body));	
-			}
-		});
-	});
-};
-
 function getGeneralItemData(itemID) {
 	var url = apiML + "/items/" + itemID;
 	return createItemRequest(url);
@@ -131,6 +128,14 @@ function parseGeneralData(data) {
 
 
 router.get('/api/items/:id', function(req, res) {
+	var cacheKey = "item/" + req.params.id;
+	var cached = validateCache(cacheKey);
+
+	if(cached !== false){
+		res.send(cached);
+		return;
+	}
+
 	Promise.all([getGeneralItemData(req.params.id), getDescriptionItemData(req.params.id)])
 	.then(([generalResults, descriptionResult]) => {
 		var parsedGeneralData = parseGeneralData(generalResults);
@@ -140,11 +145,42 @@ router.get('/api/items/:id', function(req, res) {
 		createItemRequest(itemCategoryUrl)
 		.then(function(response){
 			parsedGeneralData.categories = response.path_from_root.map(function(item, index){ return item.name });
+			myCache.set( cacheKey, parsedGeneralData);
 			res.send(parsedGeneralData);
 		});
 	})
 	.catch(err => res.send(err))
 });
+
+/*******************************************************/
+/*******************************************************/
+/*******************************************************/
+
+function createItemRequest(url){
+	return new Promise((resolve, reject) => {
+    	request.get({
+			"headers": {
+				"content-type": "application/json"
+			},
+			"url": url
+		}, (error, response, body) => {
+			if (error) {
+				reject(error);
+			} else {
+				resolve(JSON.parse(body));	
+			}
+		});
+	});
+};
+
+function validateCache(cacheKey) {
+	var cached = myCache.get(cacheKey);
+	if(cached !== undefined) {
+		return cached;
+	} else {
+		return false;
+	}
+}
 
 /*******************************************************/
 /*******************************************************/
