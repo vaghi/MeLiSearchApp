@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import shippingIcon from '../Assets/ic_shipping.png';
 import ItemPrice from '../components/itemPrice';

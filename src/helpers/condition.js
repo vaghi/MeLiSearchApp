@@ -1,4 +1,4 @@
-var Condition = {    
+const Condition = {    
     new: 'Nuevo',
     used: 'Usado'
 }

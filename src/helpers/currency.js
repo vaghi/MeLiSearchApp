@@ -1,4 +1,4 @@
-var Currency = {    
+const Currency = {    
     ARS: "$",
     USD: "U$S"
 }

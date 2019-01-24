@@ -1,4 +1,4 @@
-var express = require("express"),
+const express = require("express"),
 app = express(),
 bodyParser = require("body-parser"),
 methodOverride = require("method-override");
@@ -16,20 +16,20 @@ app.use(methodOverride());
 
 app.use(cors());
 
-var router = express.Router();
-var request = require('request');
-var apiML = "https://api.mercadolibre.com"
+const router = express.Router();
+const request = require('request');
+const apiML = "https://api.mercadolibre.com"
 
 /*******************************************************/
 /******************** SEARCH LIST **********************/
 /*******************************************************/
 
-var quantityOfResults = 4;
+const quantityOfResults = 4;
 
 router.get('/api/items', function (req, res) {
 
-	var cacheKey = "search/" + req.query.q;
-	var cached = validateCache(cacheKey);
+	const cacheKey = "search/" + req.query.q;
+	const cached = validateCache(cacheKey);
 
 	if(cached !== false){
 		res.send(cached);
@@ -45,14 +45,14 @@ router.get('/api/items', function (req, res) {
 		if (error) {
 			return console.dir(error);
 		}
-		var responseData = parseResultsList(JSON.parse(body));
+		const responseData = parseResultsList(JSON.parse(body));
 		myCache.set( cacheKey, responseData);
 		res.send(responseData);
 	});
 });
 
 function parseResultsList(response) {
-	var responseParsed = {
+	let responseParsed = {
 		"author": {
 			"name": "author_name",
 			"lastname": "author_lastname"
@@ -61,7 +61,7 @@ function parseResultsList(response) {
 		items: []
 	};
 
-	var categories = response.filters.map(function(item) {
+	const categories = response.filters.map(function(item) {
 		if(item.id === "category") {
 			return item;
 		}
@@ -74,9 +74,9 @@ function parseResultsList(response) {
 		});
 	}
 
-	for (var i = 0; i < response.results.length && i < quantityOfResults; i++) {
+	for (let i = 0; i < response.results.length && i < quantityOfResults; i++) {
 
-		var newItem = response.results[i];
+		const newItem = response.results[i];
 
 		responseParsed.items.push({
 			"id": newItem.id,
@@ -92,7 +92,7 @@ function parseResultsList(response) {
 			"location": newItem.address.state_name
 		});
 	}
-	
+
 	return responseParsed;
 }
 
@@ -101,12 +101,12 @@ function parseResultsList(response) {
 /*******************************************************/
 
 function getGeneralItemData(itemID) {
-	var url = apiML + "/items/" + itemID;
+	const url = apiML + "/items/" + itemID;
 	return createItemRequest(url);
 };
 
 function getDescriptionItemData(itemID) {
-	var url = apiML + "/items/" + itemID + "/description";
+	const url = apiML + "/items/" + itemID + "/description";
 	return createItemRequest(url);
 };
 
@@ -128,8 +128,8 @@ function parseGeneralData(data) {
 
 
 router.get('/api/items/:id', function(req, res) {
-	var cacheKey = "item/" + req.params.id;
-	var cached = validateCache(cacheKey);
+	const cacheKey = "item/" + req.params.id;
+	const cached = validateCache(cacheKey);
 
 	if(cached !== false){
 		res.send(cached);
@@ -138,10 +138,10 @@ router.get('/api/items/:id', function(req, res) {
 
 	Promise.all([getGeneralItemData(req.params.id), getDescriptionItemData(req.params.id)])
 	.then(([generalResults, descriptionResult]) => {
-		var parsedGeneralData = parseGeneralData(generalResults);
+		let parsedGeneralData = parseGeneralData(generalResults);
 		parsedGeneralData.description = descriptionResult.plain_text;
 
-		var itemCategoryUrl = apiML + "/categories/" + generalResults.category_id;
+		const itemCategoryUrl = apiML + "/categories/" + generalResults.category_id;
 		createItemRequest(itemCategoryUrl)
 		.then(function(response){
 			parsedGeneralData.categories = response.path_from_root.map(function(item, index){ return item.name });
@@ -167,14 +167,14 @@ function createItemRequest(url){
 			if (error) {
 				reject(error);
 			} else {
-				resolve(JSON.parse(body));	
+				resolve(JSON.parse(body));
 			}
 		});
 	});
 };
 
 function validateCache(cacheKey) {
-	var cached = myCache.get(cacheKey);
+	const cached = myCache.get(cacheKey);
 	if(cached !== undefined) {
 		return cached;
 	} else {
@@ -188,6 +188,6 @@ function validateCache(cacheKey) {
 
 app.use(router);
 
-app.listen(3000, function () { 
+app.listen(3000, function () {
 	console.log("Node server running on http://localhost:3000");
 });

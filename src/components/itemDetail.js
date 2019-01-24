@@ -18,23 +18,26 @@ class ItemDetail extends React.Component {
 			return null;
 		};
 
+		const { itemData } = this.props;
+
 		return (
 			<div>
-				<Breadcrumb Categories={this.props.itemData.categories}/>
+				<Breadcrumb Categories={itemData.categories}/>
 				<div id="itemDetailContainer" className="item-detail-container">
 					<div id="itemDetailHeaderContainer" className="item-detail-header-container">
 						<div id="itemDetailImageContainer" className="item-detail-image-container">
-		                    <img src={this.props.itemData.picture} alt={this.props.itemData.title}/>
+		                    <img src={itemData.picture} alt={itemData.title}/>
+
 		                </div>
 		                <div id="itemDetailInfoContainer" className="item-detail-info-container">
 		                	<div id="itemDetailConditionAndQty" className="item-detail-condition-and-qty">
-		                		<span>{Condition[this.props.itemData.condition]} - {this.props.itemData.sold_quantity} Vendidos</span>
+		                		<span>{Condition[itemData.condition]} - {itemData.sold_quantity} Vendidos</span>
 		                	</div>
 		                	<div id="itemDetailTitle" className="item-detail-title">
-		                		<span>{this.props.itemData.title}</span>
+		                		<span>{itemData.title}</span>
 		                	</div>
 		                	<div id="itemDetailPriceContainer" className="item-detail-price-container">
-		                		<ItemPrice priceData={this.props.itemData.price}/>
+		                		<ItemPrice priceData={itemData.price}/>
 		                	</div>
 		                	<div id="itemDetailPurchaseButton" className="item-detail-purchase-button">
 		                		<BaseButton buttonTitle={Labels.purchase}/>
@@ -46,8 +49,8 @@ class ItemDetail extends React.Component {
 	                		{Labels.productDescription}
 	                	</div>
 	                	<div className="item-detail-desc-body">
-	                		<p>{this.props.itemData.description}</p>
-	                	</div>                	
+	                		<p>{itemData.description}</p>
+	                	</div>
 	                </div>
 				</div>
 			</div>

@@ -1,4 +1,4 @@
-var Labels = {    
+const Labels = {    
 	purchase: 'Comprar',
     sold: 'Vendidos',
     productDescription: "Descripción del producto"

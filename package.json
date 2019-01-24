@@ -3,15 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
+    "eslint": "^5.6.1",
     "express": "^4.7.1",
     "method-override": "^2.3.10",
     "node-cache": "^4.2.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "webpack": "^4.20.2",
+    "yarn": "^1.10.1"
   },
   "scripts": {
     "start": "react-scripts start",
