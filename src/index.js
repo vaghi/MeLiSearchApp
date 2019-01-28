@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
-import history from './components/history';
+import history from './components/utils/history';
 
 import './index.css';
 import './App.css';
 
 import SearchBar from './components/searchBar';
-import ResultsList from './components/resultsList';
+import ResultsList from './components/resultsList/index';
 import ItemDetail from './components/itemDetail';
 
 
-class MainContainer extends React.Component {
+class MainContainer extends PureComponent {
 
     constructor(state) {
         super(state);
@@ -36,7 +36,7 @@ class MainContainer extends React.Component {
         this.setState({redirectToItem: false});
     }
 
-    selectItemHandler(param, e) {    
+    selectItemHandler(param, e) {
         fetch( 'http://localhost:3000/api/items/' + param)
         .then( results => {
             return results.json();

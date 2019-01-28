@@ -1,7 +1,7 @@
-import React from 'react';
-import Currency from '../helpers/currency';
+import React, { PureComponent } from 'react';
+import Currency from '../constants/currency';
 
-class ItemPrice extends React.Component {
+class ItemPrice extends PureComponent {
 	render() {
 		return (
 			<div>

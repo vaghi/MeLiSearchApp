@@ -1,10 +1,10 @@
-import React from 'react';
-import ResultItem from '../components/resultItem';
-import Breadcrumb from '../components/breadcrumb';
+import React, { PureComponent } from 'react';
+import ResultItem from './resultItem';
+import Breadcrumb from '../utils/breadcrumb';
 import queryString from 'query-string';
-import history from '../components/history';
+import history from '../utils/history';
 
-class ResultsList extends React.Component {
+class ResultsList extends PureComponent {
 
 	constructor(props) {
 		super();
@@ -15,29 +15,27 @@ class ResultsList extends React.Component {
 
 	componentWillMount() {
 		history.listen((location, action) => {
-			this.searchItems(queryString.parse(location.search));
+			this.props.searchItems(queryString.parse(location.search));
 		});
 	}
 
 	componentDidMount(props) {
-		this.searchItems();
+		const queryParam = this.props.routerProps.location ? queryString.parse(this.props.routerProps.location.search) : null;
+		this.props.searchItems(queryParam);
 	}
 
-	searchItems(params) {
-		const queryParam = this.props.routerProps.location ? queryString.parse(this.props.routerProps.location.search) : null;
-		const urlParams = params ? params : queryParam;
-
-		if(!urlParams || !urlParams.search)
+	/*searchItems(params) {
+		if(!params || !params.search)
 			return;
 
-		fetch( 'http://localhost:3000/api/items?q=' + urlParams.search)
+		fetch( 'http://localhost:3000/api/items?q=' + params.search)
 		.then( results => {
 			return results.json();
 		}).then(data => {
 			this.setState({ resultItems: data});
 			this.setState({ showResults: true });
 		});
-	}
+	}*/
 
 	render() {
 
@@ -45,13 +43,15 @@ class ResultsList extends React.Component {
 			return <div></div>
 		}
 
+		const {onClickItem, redirectToItem} = this.props;
+
 		return (
 			<div id="resultsListContainer" className="results-list-container">
 				<Breadcrumb Categories={this.state.resultItems.categories}/>
 				<div id="resulstList" className="results-list">
 					{this.state.resultItems.items.map((item, index) => {
 						return <div className={"resultItem"} key={item.id}>
-							<ResultItem Item={item} onClickItem={this.props.onClickItem} redirectToItem={this.props.redirectToItem}/>
+							<ResultItem Item={item} onClickItem={onClickItem} redirectToItem={redirectToItem}/>
 						</div>
 					})}
 				</div>

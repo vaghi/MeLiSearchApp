@@ -1,11 +1,11 @@
-import React from 'react';
-import ItemPrice from '../components/itemPrice';
-import BaseButton from '../components/baseButton';
-import Breadcrumb from '../components/breadcrumb';
-import Condition from '../helpers/condition';
-import Labels from '../helpers/labels';
+import React, { PureComponent } from 'react';
+import ItemPrice from './itemPrice';
+import BaseButton from './utils/baseButton';
+import Breadcrumb from './utils/breadcrumb';
+import Condition from '../constants/condition';
+import Labels from '../constants/labels';
 
-class ItemDetail extends React.Component {
+class ItemDetail extends PureComponent {
 
 	componentDidMount(){
 		if(this.props.itemData === null) {

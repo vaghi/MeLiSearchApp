@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router';
-import shippingIcon from '../Assets/ic_shipping.png';
-import ItemPrice from '../components/itemPrice';
+import shippingIcon from '../../Assets/ic_shipping.png';
+import ItemPrice from '../itemPrice';
 
-class ResultItem extends React.Component {
+class ResultItem extends PureComponent {
 
 	constructor(props) {
 		super();
