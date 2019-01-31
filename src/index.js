@@ -1,15 +1,24 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import {AppRender} from './app';
+
+ReactDOM.render(
+    <AppRender/>,
+  document.getElementById('container')
+);
+
+/*import React, { PureComponent } from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
-import history from './components/utils/history';
+//import history from './components/utils/history';
+import Main from './components/main';
+import store, { history } from './store'
 
 import './index.css';
 import './App.css';
 
-import SearchBar from './components/searchBar';
-import ResultsList from './components/resultsList/index';
-import ItemDetail from './components/itemDetail';
 
 
 class MainContainer extends PureComponent {
@@ -48,13 +57,9 @@ class MainContainer extends PureComponent {
 
     render() {
         return (
-            <div>
-            <SearchBar onSearch={this.handleSearch.bind(this)} onChange={this.handleChange.bind(this)}/>
-            <Switch>
-                <Route exact path='/items' render={(routerProps) => <ResultsList routerProps={routerProps} redirectToItem={this.state.redirectToItem} onClickItem={this.selectItemHandler} data={this.state.itemDetailData}/>}/>
-                <Route path='/items/:id' render={(routerProps) => <ItemDetail routerProps={routerProps} itemData={this.state.itemData} searchItem={this.selectItemHandler}/>}/>
-            </Switch>
-            </div>
+            <Provider store={store}>
+                <Main></Main>
+            </Provider>
         );
     }
 }
@@ -64,6 +69,7 @@ ReactDOM.render(
     <MainContainer/>
   </BrowserRouter>,
   document.getElementById('container')
-  );
+);
 
   registerServiceWorker();
+*/

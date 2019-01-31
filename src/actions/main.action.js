@@ -1,6 +1,6 @@
-import * as types from '../constants/resultsListTypes.js';
+import * as types from '../constants/mainTypes.js';
 
-export const searchItems = (params) => (dispatch) => {
+export const handleSearch = (params) => (dispatch) => {
     if(!params || !params.search)
         return;
 
@@ -11,3 +11,7 @@ export const searchItems = (params) => (dispatch) => {
         dispatch({ type: types.SEARCH_ITEMS, barcodes: res.data });
     });
 };
+
+export const handleSearchBarChange = (value) => (dispatch) => {
+    dispatch({type: types.SEARCH_BAR_CHANGE, payload: value});
+}

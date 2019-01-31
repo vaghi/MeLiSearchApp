@@ -32,11 +32,6 @@ render() {
       <div className="header-content">
         <img src={logoML} alt=""/>
         <input type="text" id="searchInput" placeholder="Nunca dejes de buscar" onChange={ this.changeHandler.bind(this) }/>
-        <Link to={"/items?search=" + this.state.query}>
-            <button type="submit" className="searchBtn" onClick={ this.searchHandler.bind(this) }>
-              <img src={searchIcon} alt=""></img>
-            </button>
-        </Link>
       </div>
     </div>
     );
