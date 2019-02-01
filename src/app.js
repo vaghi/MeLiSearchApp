@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux'
+import './index.css';
 
 import Main from './components/main';
 

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import logoML from '../Assets/Logo_ML.png';
-import searchIcon from '../Assets/ic_Search.png';
+import './searchBar.css';
+import logoML from '../../Assets/Logo_ML.png';
+import searchIcon from '../../Assets/ic_Search.png';
 import { Link } from 'react-router-dom';
 
 class SearchBar extends PureComponent {
