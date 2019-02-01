@@ -9,12 +9,12 @@ import ItemDetail from '../itemDetail';
 class Main extends PureComponent {
 
     render() {
-        const { handleSearchBarChange, handleSearch } = this.props;
+        const { handleSearchBarChange, handleSearch, main } = this.props;
 
         return (
             <BrowserRouter>
     			<div>
-                    <SearchBar onSearch={handleSearch} onChange={handleSearchBarChange}/>
+                    <SearchBar onSearch={handleSearch} onChange={handleSearchBarChange} searchParams={main.searchParams}/>
                     <Switch>
                         <Route exact path='/items' render={(routerProps) => <ResultsList routerProps={routerProps} redirectToItem={this.state.redirectToItem} onClickItem={this.selectItemHandler} data={this.state.itemDetailData}/>}/>
                         <Route path='/items/:id' render={(routerProps) => <ItemDetail routerProps={routerProps} itemData={this.state.itemData} searchItem={this.selectItemHandler}/>}/>

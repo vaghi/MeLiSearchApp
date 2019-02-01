@@ -8,10 +8,10 @@ export const handleSearch = (params) => (dispatch) => {
     .then( results => {
         return results.json();
     }).then(res => {
-        dispatch({ type: types.SEARCH_ITEMS, barcodes: res.data });
+        dispatch({ type: types.SEARCH_ITEMS, items: res.data });
     });
 };
 
 export const handleSearchBarChange = (value) => (dispatch) => {
     dispatch({type: types.SEARCH_BAR_CHANGE, payload: value});
-}
+};
