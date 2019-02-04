@@ -2,7 +2,8 @@ import * as types from '../constants/mainTypes';
 
 const initialState = {
     searchParams: '',
-    resultItems: []
+    resultItems: [],
+    redirectToItem: false
 }
 
 export const mainReducer = (state = initialState, action) => {
@@ -10,12 +11,13 @@ export const mainReducer = (state = initialState, action) => {
         case types.SEARCH_BAR_CHANGE:
             return {
                 ...state,
-                searchParams: action.value
+                searchParams: action.payload
             };
         case types.SEARCH_ITEMS:
             return {
                 ...state,
-                resultItems: action.items
+                resultItems: action.payload.data,
+                redirectToItem: true
             };
         default:
             return state;
