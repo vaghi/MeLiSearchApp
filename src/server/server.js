@@ -188,6 +188,6 @@ function validateCache(cacheKey) {
 
 app.use(router);
 
-app.listen(3000, function () {
-	console.log("Node server running on http://localhost:3000");
+app.listen(3003, function () {
+	console.log("Node server running on http://localhost:3003");
 });

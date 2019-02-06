@@ -1,26 +1,11 @@
 import * as types from '../constants/mainTypes.js';
 
-export const handleSearch = (params) => {
-    /*if(!params || !params.search)
-        return;*/
+export const handleSearch = (params) => (dispatch) => {
 
-    const res = {
-        data: [{asd:"asd"},{dsa:"dsa"}]
-    };
-
-    return {
-      type: types.SEARCH_ITEMS,
-      payload: res
-    }
-
-    //dispatch({ type: types.SEARCH_ITEMS, items: res.data });
-
-    /*fetch( 'http://localhost:3000/api/items?q=' + params.search)
-    .then( results => {
-        return results.json();
-    }).then(res => {
-        dispatch({ type: types.SEARCH_ITEMS, items: res.data });
-    });*/
+    fetch( 'http://localhost:3003/api/items?q=' + params)
+        .then(response => response.json())
+        .then(res => { dispatch({ type: types.SEARCH_ITEMS, payload: res });
+    });
 };
 
 export const handleSearchBarChange = e => ({

@@ -16,7 +16,7 @@ export const mainReducer = (state = initialState, action) => {
         case types.SEARCH_ITEMS:
             return {
                 ...state,
-                resultItems: action.payload.data,
+                resultItems: action.payload.items,
                 redirectToItem: true
             };
         default:
