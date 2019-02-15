@@ -1,0 +1,23 @@
+.results-list-container {
+  width: 100%;
+  background: #EEEEEE;
+}
+
+.results-list {
+  width: 80%;
+  background: #FFFFFF;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-item-container {
+  list-style: none;
+  align-items: center;
+  display: flex;
+}
+
+.result-item-container a {
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}

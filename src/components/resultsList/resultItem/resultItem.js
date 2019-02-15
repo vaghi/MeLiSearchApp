@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router';
-import shippingIcon from '../../assets/ic_shipping.png';
-import ItemPrice from '../itemPrice';
+import './resultItem.css';
+import shippingIcon from '../../../assets/ic_shipping.png';
+import ItemPrice from '../../itemPrice';
 
 class ResultItem extends PureComponent {
 
