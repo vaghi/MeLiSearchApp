@@ -1,32 +1,3 @@
-.breadcrumb {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 16px;
-  margin-top: 16px;
-  font-size: 14px;
-  list-style: none;
-  display: flex;
-}
-
-.breadcrumb li {
-  color: #999999;
-}
-
-.breadcrumb li:after {
-  content:'\3E';
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-}
-
-.breadcrumb li:last-child {
-  font-weight: bold;
-}
-
-.breadcrumb li:last-child:after {
-  content: none;
-}
-
 .item-detail-container {
   width: 80%;
   background: #FFFFFF;

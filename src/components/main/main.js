@@ -16,8 +16,8 @@ class Main extends PureComponent {
     			<div>
                     <SearchBar onSearch={handleSearch} onChange={handleSearchBarChange} searchParams={main.searchParams}/>
                     <Switch>
-                        <Route path='/items' render={(routerProps) => <ResultsList routerProps={routerProps}
-                            redirectToItem={main.redirectToItem} onClickItem={this.selectItemHandler} resultItems={main.resultItems}/>}/>
+                        <Route path='/items' render={(routerProps) => <ResultsList routerProps={routerProps} breadcrumbCategories={main.breadcrumbCategories}
+                             onClickItem={this.selectItemHandler} resultItems={main.resultItems}/>}/>
                         <Route exact path='/items/:id' render={(routerProps) => <ItemDetail routerProps={routerProps}
                             itemData={this.state.itemData} searchItem={this.selectItemHandler}/>}/>
                     </Switch>

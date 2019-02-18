@@ -7,11 +7,11 @@ import history from '../utils/history';
 class ResultsList extends PureComponent {
 
 	render() {
-		const {onClickItem, redirectToItem, resultItems} = this.props;
+		const {onClickItem, redirectToItem, resultItems, breadcrumbCategories} = this.props;
 
 		return (
 			<div id="resultsListContainer" className="results-list-container">
-
+				<Breadcrumb Categories={breadcrumbCategories}/>
 				<div id="resulstList" className="results-list">
 					{resultItems.map((item, index) => {
 						return <div className={"resultItem"} key={item.id}>

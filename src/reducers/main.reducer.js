@@ -3,7 +3,8 @@ import * as types from '../constants/mainTypes';
 const initialState = {
     searchParams: '',
     resultItems: [],
-    redirectToItem: false
+    redirectToItem: false,
+    breadcrumbCategories: []
 }
 
 export const mainReducer = (state = initialState, action) => {
@@ -17,6 +18,7 @@ export const mainReducer = (state = initialState, action) => {
             return {
                 ...state,
                 resultItems: action.payload.items,
+                breadcrumbCategories: action.payload.categories,
                 redirectToItem: true
             };
         default:
