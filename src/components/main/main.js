@@ -3,7 +3,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import SearchBar from '../searchBar/index';
 import ResultsList from '../resultsList/index';
-import ItemDetail from '../itemDetail';
+import ItemDetail from '../itemDetail/index';
 
 
 class Main extends PureComponent {
@@ -16,10 +16,10 @@ class Main extends PureComponent {
     			<div>
                     <SearchBar onSearch={handleSearch} onChange={handleSearchBarChange} searchParams={main.searchParams}/>
                     <Switch>
-                        <Route path='/items' render={(routerProps) => <ResultsList routerProps={routerProps} breadcrumbCategories={main.breadcrumbCategories}
+                        <Route path='/items' render={(routerProps) => <ResultsList breadcrumbCategories={main.breadcrumbCategories}
                              onClickItem={this.selectItemHandler} resultItems={main.resultItems}/>}/>
-                        <Route exact path='/items/:id' render={(routerProps) => <ItemDetail routerProps={routerProps}
-                            itemData={this.state.itemData} searchItem={this.selectItemHandler}/>}/>
+                        <Route exact path='/items/:id' render={(routerProps) => <ItemDetail
+                                itemData={this.state.itemData} searchItem={this.selectItemHandler}/>}/>
                     </Switch>
                 </div>
             </BrowserRouter>

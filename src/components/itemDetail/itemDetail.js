@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import ItemPrice from './itemPrice';
-import BaseButton from './utils/baseButton';
-import Breadcrumb from './utils/breadcrumb';
-import Condition from '../constants/condition';
-import Labels from '../constants/labels';
+import ItemPrice from '../itemPrice';
+import BaseButton from '../utils/baseButton';
+import Breadcrumb from '../utils/breadcrumb';
+import Condition from '../../constants/condition';
+import Labels from '../../constants/labels';
 
 class ItemDetail extends PureComponent {
 
