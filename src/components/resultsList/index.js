@@ -7,8 +7,11 @@ const actions = {
 }
 
 function mapStateToProps(state) {
+    const { resultItems, breadcrumbCategories } = state.resultsListReducer;
+
     return {
-        resultsList: state.resultsListReducer
+        resultItems,
+        breadcrumbCategories
     }
 }
 export default connect(mapStateToProps, actions) (ResultsList);

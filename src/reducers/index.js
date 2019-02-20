@@ -1,11 +1,11 @@
-import { mainReducer } from './main.reducer';
 import { resultsListReducer } from './resultsList.reducer';
+import { searchBarReducer } from './searchBar.reducer';
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
 const rootReducer = {
     resultsListReducer,
-    mainReducer
+    searchBarReducer
 };
 
 let reducers = (()=>{

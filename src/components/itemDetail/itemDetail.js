@@ -8,9 +8,7 @@ import Labels from '../../constants/labels';
 class ItemDetail extends PureComponent {
 
 	componentDidMount(){
-		if(this.props.itemData === null) {
-			this.props.searchItem("MLA650019295");
-		}
+		this.props.searchItem();
 	}
 
 	render() {

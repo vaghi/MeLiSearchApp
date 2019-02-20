@@ -1,5 +1,10 @@
-import * as types from '../constants/itemDetailTypes.js';
+import * as types from '../constants/actionTypes/itemDetailActionTypes.js';
 
-export const searchItem = (params) => (dispatch) => {
-    
+export const searchItem = (itemId) => (dispatch) => {
+    fetch( `http://localhost:3000/api/items/${itemId}`)
+        .then( results => {
+            return results.json();
+        }).then(res => {
+            dispatch({ type: types.SEARCH_ITEM, payload: res });
+        });
 };

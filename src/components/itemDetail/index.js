@@ -1,16 +1,16 @@
 import connect from 'react-redux/es/connect/connect';
-import { } from "../../actions/itemDetail.action";
+import { searchItem } from "../../actions/itemDetail.action";
 import ItemDetail from './itemDetail';
 
 const actions = {
-
+    searchItem
 }
 
 function mapStateToProps(state) {
-    const {} = state.itemDetailReducer;
+    const { itemData } = state.itemDetailReducer;
 
     return {
-        
+        itemData
     }
 }
 export default connect(mapStateToProps, actions) (ItemDetail);

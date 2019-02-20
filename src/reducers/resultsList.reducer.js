@@ -1,7 +1,8 @@
-import * as types from '../constants/resultsListTypes';
+import * as types from '../constants/actionTypes/resultsListActionTypes';
 
 const initialState = {
-    resultItems: []
+    resultItems: [],
+    breadcrumbCategories: []
 }
 
 export const resultsListReducer = (state = initialState, action) => {
@@ -9,7 +10,8 @@ export const resultsListReducer = (state = initialState, action) => {
         case types.SEARCH_ITEMS:
         return {
             ...state,
-            resultItems: action.resultItems ? action.resultItems : []
+            resultItems: action.payload.items,
+            breadcrumbCategories: action.payload.categories
         };
         default:
             return state;
