@@ -1,14 +1,20 @@
 import React, { PureComponent } from 'react';
+import './itemDetail.css';
 import ItemPrice from '../itemPrice';
-import BaseButton from '../utils/baseButton';
-import Breadcrumb from '../utils/breadcrumb';
+import BaseButton from '../utils/baseButton/baseButton';
+import Breadcrumb from '../utils/breadcrumb/breadcrumb';
 import Condition from '../../constants/condition';
 import Labels from '../../constants/labels';
 
 class ItemDetail extends PureComponent {
 
 	componentDidMount(){
-		this.props.searchItem();
+		this.searchItem();
+	}
+
+	searchItem() {
+		const id = this.props.match.params.id;
+		this.props.searchItem(id);
 	}
 
 	render() {
@@ -16,11 +22,11 @@ class ItemDetail extends PureComponent {
 			return null;
 		};
 
-		const { itemData } = this.props;
+		const { itemData, breadcrumbCategories } = this.props;
 
 		return (
 			<div>
-				<Breadcrumb Categories={itemData.categories}/>
+				<Breadcrumb Categories={breadcrumbCategories}/>
 				<div id="itemDetailContainer" className="item-detail-container">
 					<div id="itemDetailHeaderContainer" className="item-detail-header-container">
 						<div id="itemDetailImageContainer" className="item-detail-image-container">

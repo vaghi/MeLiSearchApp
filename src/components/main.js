@@ -9,15 +9,13 @@ import history from './utils/history';
 class Main extends PureComponent {
 
     render() {
-        const { handleSearchBarChange, main } = this.props;
-
         return (
             <Router history={history}>
     			<div>
                     <SearchBar/>
                     <Switch>
                         <Route path='/items' component={ResultsList}/>
-                        <Route path='/item/:id' render={(routerProps) => <ItemDetail/>}/>
+                        <Route path='/item/:id' component={ItemDetail}/>
                     </Switch>
                 </div>
             </Router>

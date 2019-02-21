@@ -60,15 +60,6 @@
   white-space: pre-wrap;
 }
 
-.base-button {
-  width: 200px;
-  height: 36px;
-  background-color: #3483FA;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 4px;
-}
-
 .item-detail-price-container .price-decimals {
   font-size: 20px;
   position: relative;

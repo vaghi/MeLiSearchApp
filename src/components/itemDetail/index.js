@@ -7,10 +7,11 @@ const actions = {
 }
 
 function mapStateToProps(state) {
-    const { itemData } = state.itemDetailReducer;
+    const { itemData, breadcrumbCategories } = state.itemDetailReducer;
 
     return {
-        itemData
+        itemData,
+        breadcrumbCategories
     }
 }
 export default connect(mapStateToProps, actions) (ItemDetail);

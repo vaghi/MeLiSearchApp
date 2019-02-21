@@ -1,11 +1,13 @@
 import { resultsListReducer } from './resultsList.reducer';
 import { searchBarReducer } from './searchBar.reducer';
+import { itemDetailReducer } from './itemDetail.reducer';
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
 const rootReducer = {
     resultsListReducer,
-    searchBarReducer
+    searchBarReducer,
+    itemDetailReducer
 };
 
 let reducers = (()=>{

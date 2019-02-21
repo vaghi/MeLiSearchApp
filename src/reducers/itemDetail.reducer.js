@@ -1,7 +1,8 @@
 import * as types from '../constants/actionTypes/itemDetailActionTypes';
 
 const initialState = {
-    itemData: {}
+    itemData: null,
+    breadcrumbCategories: []
 }
 
 export const itemDetailReducer = (state = initialState, action) => {

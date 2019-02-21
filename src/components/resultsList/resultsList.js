@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import './resultsList.css';
 import ResultItem from './resultItem/resultItem';
-import Breadcrumb from '../utils/breadcrumb';
-import history from '../utils/history';
+import Breadcrumb from '../utils/breadcrumb/breadcrumb';
 import queryString from 'query-string';
 
 class ResultsList extends PureComponent {

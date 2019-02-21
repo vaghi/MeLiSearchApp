@@ -26,7 +26,7 @@ const apiML = "https://api.mercadolibre.com"
 
 const quantityOfResults = 4;
 
-router.get('/api/items', function (req, res) {
+router.get('/api/items', (req, res) => {
 
 	const cacheKey = "search/" + req.query.q;
 	const cached = validateCache(cacheKey);
@@ -51,7 +51,7 @@ router.get('/api/items', function (req, res) {
 	});
 });
 
-function parseResultsList(response) {
+parseResultsList = (response) => {
 	let responseParsed = {
 		"author": {
 			"name": "author_name",
@@ -100,17 +100,17 @@ function parseResultsList(response) {
 /*********************** ITEMS *************************/
 /*******************************************************/
 
-function getGeneralItemData(itemID) {
+getGeneralItemData = (itemID) => {
 	const url = apiML + "/items/" + itemID;
 	return createItemRequest(url);
 };
 
-function getDescriptionItemData(itemID) {
+getDescriptionItemData = (itemID) => {
 	const url = apiML + "/items/" + itemID + "/description";
 	return createItemRequest(url);
 };
 
-function parseGeneralData(data) {
+parseGeneralData = (data) => {
 	return {
 		id: data.id,
 		title: data.title,
@@ -156,7 +156,7 @@ router.get('/api/items/:id', function(req, res) {
 /*******************************************************/
 /*******************************************************/
 
-function createItemRequest(url){
+createItemRequest = (url) => {
 	return new Promise((resolve, reject) => {
     	request.get({
 			"headers": {
@@ -173,7 +173,7 @@ function createItemRequest(url){
 	});
 };
 
-function validateCache(cacheKey) {
+validateCache = (cacheKey) => {
 	const cached = myCache.get(cacheKey);
 	if(cached !== undefined) {
 		return cached;

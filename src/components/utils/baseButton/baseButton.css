@@ -1,0 +1,8 @@
+.base-button {
+  width: 200px;
+  height: 36px;
+  background-color: #3483FA;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+}

@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes/itemDetailActionTypes.js';
 
 export const searchItem = (itemId) => (dispatch) => {
-    fetch( `http://localhost:3000/api/items/${itemId}`)
+    fetch( `http://localhost:3003/api/items/${itemId}`)
         .then( results => {
             return results.json();
         }).then(res => {
