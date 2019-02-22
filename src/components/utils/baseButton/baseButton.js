@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import './baseButton.css';
 
 class BaseButton extends PureComponent {
 
