@@ -19,6 +19,7 @@
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
+    "url-parse": "^1.4.4",
     "webpack": "^4.20.2",
     "yarn": "^1.10.1"
   },
