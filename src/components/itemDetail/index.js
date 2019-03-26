@@ -14,4 +14,5 @@ function mapStateToProps(state) {
         breadcrumbCategories
     }
 }
+
 export default connect(mapStateToProps, actions) (ItemDetail);
