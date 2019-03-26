@@ -8,6 +8,7 @@
     "cors": "^2.8.5",
     "eslint": "^5.15.3",
     "express": "^4.16.4",
+    "merge": "^1.2.1",
     "method-override": "^2.3.10",
     "node-cache": "^4.2.0",
     "query-string": "^6.4.0",
