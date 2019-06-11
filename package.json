@@ -5,6 +5,7 @@
     "dependencies": {
         "babel-polyfill": "^6.26.0",
         "body-parser": "^1.18.3",
+        "concurrently": "^4.1.0",
         "cors": "^2.8.5",
         "eslint": "^5.15.3",
         "express": "^4.16.4",
@@ -26,6 +27,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
+        "start-all": "concurrently \"npm start\" \"node src/server/server.js\"",
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject"
