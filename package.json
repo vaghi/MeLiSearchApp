@@ -23,7 +23,7 @@
         "redux-thunk": "^2.3.0",
         "url-parse": "^1.4.4",
         "webpack": "^3.11.0",
-        "yarn": "^1.13.0"
+        "yarn": "^1.22.0"
     },
     "scripts": {
         "start": "react-scripts start",
